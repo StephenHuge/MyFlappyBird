@@ -10,21 +10,29 @@ import edu.princeton.cs.algs4.StdDraw;
 public class Game {
     private Bird bird;
     private Wall[] walls;
-    private int score = 0;
+    private int score =0;
+    private int grade = 0;
+    private boolean paused = false;
 
     public Game() {
     }
 
+    /**
+     * game's entrance
+     */
     @Test
-    public void start() {
+    public void start() {   
         StdDraw.setPenRadius(0.05);
         while(true) {
-            mainPage();
-            play();
-            gameOver();
+            mainPage();     // start page
+            running();         // running page
+            gameOver();     // end page
         }
     }
 
+    /**
+     * start/main page of this game, press SPACE to start the game
+     */
     private void mainPage() {
         StdDraw.clear();
         StdDraw.setPenRadius(0.05);
@@ -35,15 +43,59 @@ public class Game {
             if(StdDraw.isKeyPressed(0x20))  break;
         }
 
-        
+
     }
 
+    /**
+     * running page of this game
+     */
+    private void running() {
+        StdDraw.setPenRadius(0.05);
+        bird = new Bird();
+        while(true) {
+            if (!bird.isAlive())  break;
+            if (paused  && bird.isAlive()) {
+                pause();
+            }
+            if (!paused && bird.isAlive()) {
+               play();
+            }
+            if(StdDraw.isKeyPressed(0x50)) {
+                paused = !paused;
+                StdDraw.pause(100);
+            }
+            
+        }
+        Utils.clear();
+    }
+
+    private void pause() {
+        StdDraw.text(0.5, 0.7, "PAUSED");
+    }
+
+    private void play() {
+        draw();
+        judgeAlive();
+        StdDraw.pause(80);
+        bird.move();
+        grade++;
+        if (grade % 33 == 0) {
+            score += 1;
+            grade = 10;
+        }
+        if (StdDraw.isKeyPressed(0x20)) {
+            bird.jump();
+        }
+        StdDraw.clear();
+    }
+    /**
+     * end page of this game, if the bird is not alive, then game is over
+     */
     private void gameOver() {
         StdDraw.clear();
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(Color.MAGENTA);
         while(true) {
-            
             StdDraw.text(0.5, 0.7, "GAME OVER!");
             StdDraw.text(0.5, 0.6, "YOUR SCORE IS " + score);
             StdDraw.text(0.5, 0.5, "Press enter to return");
@@ -54,51 +106,34 @@ public class Game {
         }
     }
 
-    private void play() {
-        StdDraw.clear();
-        StdDraw.setPenRadius(0.05);
-        bird = new Bird();
-        int count = 0;
-        while(true) {
-            bird.draw();
-            walls = Utils.getWalls();
-            for(Wall wall: walls) {
-                wall.draw();
-            }
-            StdDraw.setPenColor(Color.DARK_GRAY);
-            StdDraw.setFont(new Font("", Font.BOLD, 15));
-            StdDraw.textRight(0.9, 0.9, score + "");
-            for(Wall wall: walls) {
-                double bX = bird.getxAxis();
-                double bY = bird.getyAxis();
-                double wX = wall.getxAxis();
-                double wAY = wall.getAboveYAxis();
-                double wBY = wall.getBelowYAxis();
-                if(Math.abs(wX - bX) < 0.01 ) {
-                    if (bY >= wAY || bY <= wBY) {
-//                        System.out.println("bird: " + bX + ", " + bY);
-//                        System.out.println("wall above: " + wX + ", " + wAY);
-//                        System.out.println("wall below: " + wX + ", " + wBY);
-                        bird.setAlive(false);
-                    } 
-                } else if(bird.getyAxis() <= 0 || bird.getyAxis() >= 1.0) {
-                    bird.setAlive(false);
-                } 
-            }
-            if(!bird.isAlive()) break;
-            StdDraw.pause(80);
-            bird.move();
-            count++;
-            if(count % 33 == 0) {
-                score += 1;
-                count = 0;
-            }
-            if(StdDraw.isKeyPressed(0x20)) {
+    /**
+     * when game running, draw bird, walls and score  
+     */
+    private void draw() {
+        //        StdDraw.clear();
+        bird.draw();
+        walls = Utils.getWalls();
+        for (Wall wall: walls) {    wall.draw();    }
+        StdDraw.setPenColor(Color.DARK_GRAY);
+        StdDraw.setFont(new Font("", Font.BOLD, 15));
+        StdDraw.textRight(0.9, 0.9, score + "");
+    }
 
-                bird.jump();
-            }
-            StdDraw.clear();   
+    /**
+     * judge whether the bird is alive
+     */
+    private void judgeAlive() {
+        for (Wall wall: walls) {
+            double bX = bird.getxAxis();
+            double bY = bird.getyAxis();
+            double wX = wall.getxAxis();
+            double wAY = wall.getAboveYAxis();
+            double wBY = wall.getBelowYAxis();
+            if (Math.abs(wX - bX) < 0.01 ) {
+                if (bY >= wAY || bY <= wBY) {   bird.setAlive(false);   } 
+            } else if(bird.getyAxis() <= 0 || bird.getyAxis() >= 1.0) {
+                bird.setAlive(false);
+            } 
         }
-        Utils.clear();
     }
 }
