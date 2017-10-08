@@ -93,6 +93,7 @@ public class Game {
      */
     private void pause() {
         StdDraw.text(0.5, 0.7, "PAUSED");
+        StdDraw.text(0.5, 0.6, "Press P to continue");
     }
 
     /**
