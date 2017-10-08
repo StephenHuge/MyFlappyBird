@@ -58,21 +58,33 @@ public class Game {
                 pause();
             }
             if (!paused && bird.isAlive()) {
-               play();
+                play();
             }
-            if(StdDraw.isKeyPressed(0x50)) {
-                paused = !paused;
-                StdDraw.pause(100);
-            }
-            
+            checkPaused();
         }
-        Utils.clear();
+        Utils.clear();  // clear game's state, start a new game or exit
     }
 
+    /**
+     * check whether key 'P' is pressed, if it is, change game's pause state 
+     */
+    private void checkPaused() {
+        if(StdDraw.isKeyPressed(0x50)) {    // whether key 'P' is pressed
+            paused = !paused;
+            StdDraw.pause(100);
+        }
+    }
+
+    /**
+     * if paused, do something
+     */
     private void pause() {
         StdDraw.text(0.5, 0.7, "PAUSED");
     }
 
+    /**
+     * if not paused, when playing
+     */
     private void play() {
         draw();
         judgeAlive();
