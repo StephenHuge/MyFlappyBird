@@ -7,12 +7,25 @@ import org.junit.Test;
 
 import edu.princeton.cs.algs4.StdDraw;
 
+/**
+ * main logic of this game is here, method {@code start()} is the entrance
+ * of this game
+ * 
+ * @author HJS
+ *
+ * @date 2017年10月8日
+ */
 public class Game {
-    private Bird bird;
-    private Wall[] walls;
-    private int score =0;
-    private int grade = 0;
-    private boolean paused = false;
+    
+    private Bird bird;      // there is one bird in this game
+    
+    private Wall[] walls;   // there are several walls in this game
+    
+    private int score =0;   // score that a player get
+    
+    private int grade = 0;  // for calculating the score
+    
+    private boolean paused = false; // game's state
 
     public Game() {
     }
@@ -76,14 +89,14 @@ public class Game {
     }
 
     /**
-     * if paused, do something
+     * if paused, pause the game
      */
     private void pause() {
         StdDraw.text(0.5, 0.7, "PAUSED");
     }
 
     /**
-     * if not paused, when playing
+     * if not paused, play this game
      */
     private void play() {
         draw();
@@ -132,7 +145,7 @@ public class Game {
     }
 
     /**
-     * judge whether the bird is alive
+     * judge whether bird is alive
      */
     private void judgeAlive() {
         for (Wall wall: walls) {
