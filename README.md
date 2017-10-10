@@ -3,7 +3,7 @@
 ## What's this?
 This is a small game developed in Java.  
 The library is `alsg.jar`, which warpped JFrame and Swing.  
-It is from open Class [Algorithms 4](https://www.coursera.org/learn/algorithms-part1/home/welcome"Algorithms 4") .  
+It is from open Class [Algorithims 4](https://www.coursera.org/learn/algorithms-part1/home/welcome ) .  
 There are some pictures of this game:  
 <center>
 
