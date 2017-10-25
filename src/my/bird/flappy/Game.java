@@ -13,7 +13,7 @@ import edu.princeton.cs.algs4.StdDraw;
  * 
  * @author HJS
  *
- * @date 2017年10月8日
+ * @date 2017骞�10鏈�8鏃�
  */
 public class Game {
     
@@ -50,9 +50,10 @@ public class Game {
         StdDraw.clear();
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(Color.BLACK);
+        StdDraw.text(0.5, 0.7, "Main Page");
+        StdDraw.text(0.5, 0.6, "Press space to start");
+        
         while(true) {
-            StdDraw.text(0.5, 0.7, "Main Page");
-            StdDraw.text(0.5, 0.6, "Press space to start");
             if(StdDraw.isKeyPressed(0x20))  break;
         }
 
@@ -121,10 +122,10 @@ public class Game {
         StdDraw.clear();
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(Color.MAGENTA);
+        StdDraw.text(0.5, 0.7, "GAME OVER!");
+        StdDraw.text(0.5, 0.6, "YOUR SCORE IS " + score);
+        StdDraw.text(0.5, 0.5, "Press enter to return");
         while(true) {
-            StdDraw.text(0.5, 0.7, "GAME OVER!");
-            StdDraw.text(0.5, 0.6, "YOUR SCORE IS " + score);
-            StdDraw.text(0.5, 0.5, "Press enter to return");
             if(StdDraw.isKeyPressed('\n')) {
                 score = 0;
                 break;
