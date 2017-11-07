@@ -1,4 +1,4 @@
-package my.bird.flappy;
+package com.bird.game;
 
 import java.awt.Color;
 
@@ -11,7 +11,7 @@ import my.bird.flappy.Utils;
  * 
  * @author HJS
  *
- * @date 2017年10月8日
+ * @date 2017-10-8
  */
 public class Bird {
     private Color color;    // color of this bird

@@ -6,6 +6,7 @@ import java.awt.Font;
 import org.junit.Test;
 
 import edu.princeton.cs.algs4.StdDraw;
+import my.bird.flappy.Utils;
 
 /**
  * main logic of this game is here, method {@code start()} is the entrance
