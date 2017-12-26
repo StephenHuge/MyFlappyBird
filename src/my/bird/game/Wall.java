@@ -1,4 +1,4 @@
-package com.bird.game;
+package my.bird.game;
 
 import java.awt.Color;
 
@@ -12,7 +12,7 @@ import edu.princeton.cs.algs4.StdRandom;
  *  
  * @author HJS
  *
- * @date 2017å¹´10æœˆ8æ—¥
+ * @date 2017å¹?10æœ?8æ—?
  */
 public class Wall {
 

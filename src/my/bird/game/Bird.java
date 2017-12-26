@@ -1,4 +1,4 @@
-package com.bird.game;
+package my.bird.game;
 
 import java.awt.Color;
 
