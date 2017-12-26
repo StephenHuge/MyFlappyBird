@@ -1,4 +1,4 @@
-package my.bird.hello;
+package my.bird.test;
 
 import edu.princeton.cs.algs4.StdDraw;
 
