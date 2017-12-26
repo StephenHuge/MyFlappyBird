@@ -15,24 +15,34 @@ public class Game {
     private State pauseState;
     private State startState;
     
-    private State state = startState;
+    private State state;
     public Game() {
         gameState  = new GameState(this);
         overState  = new OverState(this);
         pauseState = new PauseState(this);
         startState = new StartState(this);
+        state = startState;
+        System.out.println("Init state : " + startState);
     }
     
     public void start() {
+        System.out.println("GAME START!");
         state.start();
     }
     public void pause() {
+        System.out.println("PAUSE!");
         state.pause();
     }
+    public void continuea() {
+        System.out.println("CONTINUE!");
+        state.continuea();
+    }
     public void over() {
+        System.out.println("GAME OVER!");
         state.over();
     }
     public void restart() {
+        System.out.println("GAME RESTART!");
         state.restart();
     }
     
@@ -70,5 +80,9 @@ public class Game {
 
     public void setStartState(State startState) {
         this.startState = startState;
+    }
+    @Override
+    public String toString() {
+        return "game : " + state;
     }
 }

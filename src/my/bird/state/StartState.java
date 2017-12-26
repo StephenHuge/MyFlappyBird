@@ -11,4 +11,8 @@ public class StartState implements State {
     public void start() {
         game.setState(game.getGameState());
     }
+    @Override
+    public String toString() {
+        return "startState";
+    }
 }

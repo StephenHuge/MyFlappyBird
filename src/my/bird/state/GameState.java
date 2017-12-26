@@ -19,4 +19,8 @@ public class GameState implements State {
     public void over() {
         game.setState(game.getOverState());
     }
+    @Override
+    public String toString() {
+        return "gameState";
+    }
 }

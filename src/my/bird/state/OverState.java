@@ -11,4 +11,12 @@ public class OverState implements State {
     public void over() {
         game.setState(game.getOverState());
     }
+    @Override
+    public void restart() {
+        game.setState(game.getStartState());
+    }
+    @Override
+    public String toString() {
+        return "overState";
+    }
 }

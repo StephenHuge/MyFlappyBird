@@ -8,7 +8,11 @@ public class PauseState implements State {
         this.game = game;
     }
     @Override
-    public void start() {
-        game.setState(game.getStartState());
+    public void continuea() {
+        game.setState(game.getGameState());
+    }
+    @Override
+    public String toString() {
+        return "pauseState";
     }
 }
