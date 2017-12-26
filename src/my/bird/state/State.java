@@ -7,6 +7,9 @@ public interface State {
     default void pause() {
         System.out.println("call pause()");
     }
+    default void continuea() {
+        System.out.println("call continuea()");
+    }
     default void over() {
         System.out.println("call over()");
     }

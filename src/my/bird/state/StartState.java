@@ -1,5 +1,14 @@
 package my.bird.state;
 
-public class StartState implements State {
+import my.bird.game.Game;
 
+public class StartState implements State {
+    private Game game;
+    public StartState(Game game) {
+        this.game = game;
+    }
+    @Override
+    public void start() {
+        game.setState(game.getGameState());
+    }
 }
