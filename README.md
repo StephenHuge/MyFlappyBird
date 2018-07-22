@@ -20,4 +20,4 @@ There are some pictures of this game:
 4. do as hints say, enjoy it.
 
 ## Other Words
-There are still some problems, if you find some, I will sincerely appreciate 
+There are still some problems, if you find some, I will sincerely appreciate it.
