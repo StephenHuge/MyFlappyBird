@@ -20,5 +20,4 @@ There are some pictures of this game:
 4. do as hints say, enjoy it.
 
 ## Other Words
-There are still some problems, if you find some, I will sincerely appreciate if you contact me.  
-My E-mail is : 407410014@qq.com
+There are still some problems, if you find some, I will sincerely appreciate 
